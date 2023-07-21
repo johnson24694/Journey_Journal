@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     registerUser: async(req, res) => {
+        console.log("in register", req.body)
         try{
             const potentialUser = await User.findOne({email:req.body.email})
             if(potentialUser){

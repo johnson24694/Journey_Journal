@@ -18,8 +18,8 @@ const UserSchema = new mongoose.Schema({
         required: [true, "You must enter in a password."],
         minlength: [8, "Password must be at least 8 characters."]
     },
-    
-   },
+
+},
 {timestamps: true });
 
 //* Middleware

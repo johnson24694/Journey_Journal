@@ -18,10 +18,11 @@ const Register = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log("submitting user", user)
         axios.post('http://localhost:8000/api/register', user, {withCredentials:true})
             .then((res) => {
                 console.log(res);
-                navigate('/')
+                navigate('/journals/view')
             })
             .catch ((err) => {
                 console.log(err, "this isn't working");

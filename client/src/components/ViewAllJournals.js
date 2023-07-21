@@ -11,6 +11,7 @@ const localizer = momentLocalizer(moment);
 
 const ViewAllJournals = (props) => {
 
+  const navigate = useNavigate();
     const events = [
         {
           title: 'Event 1',
@@ -35,31 +36,34 @@ const ViewAllJournals = (props) => {
     //     })},[]
     // )
 
-    // const logout = () => {
-    //     axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
-    //         .then(res => {
-    //             navigate('/')
-    //             console.log('User is logged out')
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
+    const logout = () => {
+        axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
+            .then(res => {
+                navigate('/')
+                console.log('User is logged out')
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
     
 
   return (
     <div>
         <div className="myCustomHeight">
-            <Calendar
-            localizer={localizer}
-            defaultView="month"
-            defaultDate={new Date()}
-            events={events}
-            startAccessor="start"
-            endAccessor="end"
-            style={{ height: 700, width:700 }}
-            />
-  </div>
+              <Calendar
+              localizer={localizer}
+              defaultView="month"
+              defaultDate={new Date()}
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 700, width:700 }}
+              />
+        </div>
+        <div>
+            <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a>
+        </div>
 
 
 

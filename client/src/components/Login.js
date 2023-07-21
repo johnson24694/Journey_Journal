@@ -21,7 +21,7 @@ const Login = (props) => {
             .then((res) => {
                 console.log(res);
                 console.log("User is logged in")
-                navigate('/dashboard')
+                navigate('/journals/view')
             })
             .catch ((err) => {
                 console.log(err);
