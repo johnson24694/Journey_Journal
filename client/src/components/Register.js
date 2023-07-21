@@ -32,33 +32,34 @@ const Register = () => {
     };
 
 return (
-    <div>
-        <h2>Register</h2>
-        <form onSubmit={submitHandler}>
-            <div>
-                <label className='form-label'>Name:</label>
-                <input className='form-control' type="text" onChange={changeHandler} value={user.name} name="name"/>
-                {errors.name && <p>{errors.name.message}</p>}
-            </div>
-            <div>
-                <label className='form-label'>Email:</label>
-                <input className='form-control' type="email" onChange={changeHandler} value={user.email} name="email" />
-                {errors.email && <p>{errors.email.message}</p>}
-            </div>
-            <div>
-                <label className='form-label'>Password:</label>
-                <input className='form-control' type="password" onChange={changeHandler} value={user.password} name="password" />
-                {errors.password && <p>{errors.password.message}</p>}
-            </div>
-            <div>
-                <label className='form-label'>Confirm Password:</label>
-                <input className='form-control' type="password" onChange={changeHandler} value={user.confirmPassword} name="confirmPassword"/>
-                {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-            </div>
-            <br/>
-            <button>Register</button>
-        </form>
-        <br/>
+    
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div>
+            <h2 style={{ textAlign: 'center'}}>Register</h2>
+            <form onSubmit={submitHandler}>
+                <div>
+                    <input className='form-control' type="text" placeholder='Name' onChange={changeHandler} value={user.name} name="name"/>
+                    {errors.name && <p>{errors.name.message}</p>}
+                </div>
+                <div>
+                    <input className='form-control' type="email" placeholder='Email' onChange={changeHandler} value={user.email} name="email" />
+                    {errors.email && <p>{errors.email.message}</p>}
+                </div>
+                <div>
+                    <input className='form-control' type="password" placeholder='Password' onChange={changeHandler} value={user.password} name="password" />
+                    {errors.password && <p>{errors.password.message}</p>}
+                </div>
+                <div>
+
+                    <input className='form-control' type="password" placeholder='Confirm Password' onChange={changeHandler} value={user.confirmPassword} name="confirmPassword"/>
+                    {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+                </div>
+                <br/>
+                <div style={{ textAlign: 'center'}}>
+                    <button>Register</button>
+                </div>
+            </form>
+        </div>
     </div>
   )
 }

@@ -31,22 +31,26 @@ const Login = (props) => {
     };
 
 return (
-    <div>
-        <h2>Login</h2>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div>
+        <h2 style={{ textAlign: 'center'}}>Journey Journal</h2>
         <form onSubmit={loginHandler}>
             <div>
-                <label className='form-label'>Email:</label>
-                <input className='form-control' type="email" onChange={changeHandler} value={userLogin.email} name="email"/>
+                <input className='form-control' type="email" placeholder= "Email" onChange={changeHandler} value={userLogin.email} name="email"/>
                 {errors.email && <p className='text-danger'>{errors.email.message}</p>}
             </div>
             <div>
-                <label className='form-label'>Password:</label>
-                <input className='form-control' type="password" onChange={changeHandler} value={userLogin.password} name="password" />
+                <input className='form-control' type="password" placeholder= "Password" onChange={changeHandler} value={userLogin.password} name="password" />
                 {errors.password && <p>{errors.password.message}</p>}
             </div>
             <br/>
-            <button>Login</button>       
+            <div style={{ textAlign: 'center'}}>
+                <button>Login</button>
+            </div>
         </form>
+        <p style={{ textAlign: 'center'}}>Don't have a journal yet?</p>
+        <p style={{ textAlign: 'center'}}><span>Make one </span><Link to={`/register`} class="nav-link active" aria-current="page">here.</Link></p>
+        </div>
         <br/>
     </div>
   )
