@@ -1,19 +1,9 @@
 const Journal = require('../models/journal.model');
 
-module.exports.index = (request, response) => {  
-    response.json({     
-        message: "Hello World"
-    });
+module.exports.createJournal = (request, response) => {
+    console.log(request.body);
+    Journal.create(request.body) 
+        .then(journal => response.json(journal))
+        
+        .catch(err => response.status(400).json(err))
 }
-
-module.exports.createJournal = (req, res) => {
-    Journal.create(req.body) 
-        .then((newJournal) => {
-            res.json({ newJournal });
-        })
-        .catch((err) => {
-            res.status(400).json({ err });
-        });
-    };
-
-

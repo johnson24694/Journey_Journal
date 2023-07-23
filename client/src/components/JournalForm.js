@@ -1,17 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
-const JournalForm= () => {
-    const [ message, setMessage ] = useState("Loading...")
-    useEffect(()=>{
-        axios.get("http://localhost:8000/api")
-            .then(res=>setMessage(res.data.message))
-            .catch(err=>console.log(err))
-    }, []);
-    return (
-        <div>
-            <h2>Message from the backend: {message}</h2>
-        </div>
-    )
+import { useNavigate} from "react-router-dom";
+
+const JournalForm= (props) => {
+    const {journal, setJournal} = props;
+    const [feeling, setFeeling] = useState("");
+    const [notes, setNotes] = useState("");
+    const navigate = useNavigate();
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        axios.post(
+            'http://localhost:8000/api/journal', 
+            {
+                feeling,
+                notes
+            }, 
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+        })
+        .then(res=> {
+            console.log(res);
+        })
+        .catch(err=>console.log(err))
+    }
+
+        return (
+            <div>
+                <form onSubmit={onSubmitHandler}>
+                    <h1>Create New Journal Entry</h1>
+                    <div>
+                        <p>
+                            <label>How are you feeling today? </label>
+                            <input type="text" onChange = {(e)=>setFeeling(e.target.value)}/>
+                        </p>
+                        <p>
+                            <label>What notable things happened today? </label>
+                            <input type="text" onChange = {(e)=>setNotes(e.target.value)}/>
+                        </p>
+                    </div>
+
+                    <input type="submit" onSubmit={(e)=>setJournal({feeling,notes})}  />
+                </form>
+            </div>
+        )
 }
 export default JournalForm;
 
