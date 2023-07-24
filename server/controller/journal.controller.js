@@ -7,3 +7,10 @@ module.exports.createJournal = (request, response) => {
         
         .catch(err => response.status(400).json(err))
 }
+
+module.exports.updateJournal = (request, response) => {
+    Journal.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+        .then(updatedJournal => response.json(updatedJournal))
+        .catch(err => response.json(err))
+}
+
