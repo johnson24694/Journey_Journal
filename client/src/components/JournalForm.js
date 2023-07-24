@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const JournalForm= (props) => {
     const {journal, setJournal} = props;
+    const location = useLocation();
     const [feeling, setFeeling] = useState("");
     const [notes, setNotes] = useState("");
     const navigate = useNavigate();
+
+    const queryParams = new URLSearchParams(location.search);
+    const selectedDate = queryParams.get('date');
+    const [start, setStart] = useState(selectedDate ? new Date(selectedDate) : new Date());
+    const [end, setEnd] = useState(selectedDate ? new Date(selectedDate) : new Date());
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -14,7 +20,9 @@ const JournalForm= (props) => {
             'http://localhost:8000/api/journal', 
             {
                 feeling,
-                notes
+                notes,
+                start,
+                end,
             }, 
             {
                 headers: {
@@ -23,6 +31,7 @@ const JournalForm= (props) => {
         })
         .then(res=> {
             console.log(res);
+            navigate('/journals/view')
         })
         .catch(err=>console.log(err))
     }
