@@ -52,7 +52,7 @@ const JournalForm= (props) => {
                             {errors.feeling ? <p>{errors.feeling.message}</p> : null}
                         </p>
                         <p>
-                            <label>What notable things happened today? </label>
+                            <label>What notable events happened today? </label>
                             <input type="text" onChange = {(e)=>setNotes(e.target.value)}/>
                             {errors.notes ? <p>{errors.notes.message}</p> : null}
                         </p>
