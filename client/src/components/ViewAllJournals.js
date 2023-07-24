@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -14,7 +15,12 @@ const ViewAllJournals = (props) => {
   const [journalList, setJournalList] = useState([]);
   const navigate = useNavigate();
   const {id} = useParams();
-  const [selectedDate, setSelectedDate] = useState(null); // Add state to store the selected date
+  // const [selectedDate, setSelectedDate] = useState(null); // Add state to store the selected date
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedDate = queryParams.get('date');
+    const feeling = queryParams.get('feeling');
+    const notes = queryParams.get('notes');
 
   // const [events, setEvents] = useState([
   //   {
@@ -56,7 +62,14 @@ const ViewAllJournals = (props) => {
 
   const handleSelectSlot = ({ start }) => {
     const formattedDate = moment(start).format('YYYY-MM-DD'); // Format the selected date
+    
     navigate(`/journals/new?date=${encodeURIComponent(formattedDate)}`);
+  };
+
+  const handleEventClick = (event) => {
+    // You can perform actions when an event is clicked
+    console.log("Event clicked:", event);
+    navigate(`/journal/${event.id}`); // Navigate to the edit/delete page with event ID as a parameter
   };
   
 
@@ -66,8 +79,8 @@ const ViewAllJournals = (props) => {
       .then((res) => {
         const events = res.data.map((journal) => ({
           title: journal.feeling,
-          start: new Date(journal.createdAt), // Convert the createdAt date to a Date object
-          end: new Date(journal.createdAt), // For simplicity, setting end to the same as start
+          start: new Date(journal.start), // Convert the createdAt date to a Date object
+          end: new Date(journal.end), // For simplicity, setting end to the same as start
           notes: journal.notes,
         }));
         setJournalList(events);
@@ -136,7 +149,7 @@ const ViewAllJournals = (props) => {
               startAccessor="start"
               endAccessor="end"
               style={{ height: 700, width:700 }}
-              // onSelectEvent={handleEventClick}
+              onSelectEvent={handleEventClick}
               // onSelectSlot={handleSlotSelect}
               // selectable={true}
               // onNavigate={handleDayClick}
