@@ -21,9 +21,15 @@ module.exports.getAllJournals = (req, res) => {
 }
 
 module.exports.updateJournal = (request, response) => {
-    Journal.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
-        .then(updatedJournal => response.json(updatedJournal))
-        .catch(err => response.json(err))
+    console.log(request.body);
+    Journal.findOneAndUpdate({_id: request.params.id}, request.body, {new:true, runValidators:true})
+        .then(updatedJournal => {
+            console.log(response);
+            response.json(updatedJournal)})
+        
+        .catch(err => {
+            console.log(err);
+            response.status(400).json(err)})
 }
 
 module.exports.deleteJournal = (request, response) => {

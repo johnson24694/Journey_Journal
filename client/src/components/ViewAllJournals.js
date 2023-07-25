@@ -68,7 +68,7 @@ const ViewAllJournals = (props) => {
               endAccessor="end"
               style={{ height: 700, width:700 }}
               onSelectEvent={handleEventClick}
-              selectable
+              selectable = 'true'
               onSelectSlot={handleSelectSlot}
               />
         </div>

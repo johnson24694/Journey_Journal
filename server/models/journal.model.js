@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const JournalSchema = new mongoose.Schema({
     feeling: { 
         type: String,
