@@ -26,6 +26,14 @@ module.exports.updateJournal = (request, response) => {
         .catch(err => response.json(err))
 }
 
+module.exports.deleteJournal = (request, response) => {
+    Journal.deleteOne({ _id: request.params.id }) 
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
+
+
+
 module.exports.getOneJournalById = (request, response) => {
     Journal.findOne({_id:request.params.id})
         .then(journal => response.json(journal))
