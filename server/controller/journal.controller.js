@@ -20,15 +20,14 @@ module.exports.getAllJournals = (req, res) => {
     })
 }
 
-module.exports.getOneJournalById = (request, response) => {
-    Journal.findOne({_id:request.params.id})
-        .then(journal => response.json(journal))
-        .catch(err => response.json(err));
-}
-
-
 module.exports.updateJournal = (request, response) => {
     Journal.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
         .then(updatedJournal => response.json(updatedJournal))
         .catch(err => response.json(err))
+}
+
+module.exports.getOneJournalById = (request, response) => {
+    Journal.findOne({_id:request.params.id})
+        .then(journal => response.json(journal))
+        .catch(err => response.json(err));
 }

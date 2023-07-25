@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const Update = (props) => {
 
@@ -45,7 +46,7 @@ const Update = (props) => {
                     <div>
                         <p>
                             <label>How are you feeling today? </label>
-                            <input type="text" name = "feeling" value = {feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
+                            <input type="text" name = "feeling" value = {feeling} placeholder={feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
                         </p>
                         <p>
                             <label>What notable events happened today? </label>

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 const Login = (props) => {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});

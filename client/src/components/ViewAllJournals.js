@@ -6,70 +6,22 @@ import { useLocation } from 'react-router-dom';
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-
 const localizer = momentLocalizer(moment);
 
-
 const ViewAllJournals = (props) => {
-
   const [journalList, setJournalList] = useState([]);
   const navigate = useNavigate();
   const {id} = useParams();
-  // const [selectedDate, setSelectedDate] = useState(null); // Add state to store the selected date
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const selectedDate = queryParams.get('date');
-    const feeling = queryParams.get('feeling');
-    const notes = queryParams.get('notes');
-
-  // const [events, setEvents] = useState([
-  //   {
-  //     title: 'Event 1',
-  //     start: new Date(2023, 6, 22, 10, 0), // July 22nd, 2023, 10:00 AM
-  //     end: new Date(2023, 6, 22, 12, 0),   // July 22nd, 2023, 12:00 PM
-  //   },
-  //   // Add more events here
-  // ]);
-  // // const events = [
-  //       {
-  //         title: 'Event 1',
-  //         start: new Date(2023, 6, 22, 10, 0), // July 22nd, 2023, 10:00 AM
-  //         end: new Date(2023, 6, 22, 12, 0),   // July 22nd, 2023, 12:00 PM
-  //       },
-  //       // Add more events here
-  //     ];
-
-
-  // const handleEventClick = (event) => {
-  //   // You can perform actions when an event is clicked
-  //   console.log("Event clicked:", event);
-  //   navigate('/journals/new')
-  //   // For example, you can navigate to a new page or display event details in a modal.
-  // };
-
-  // const handleNavigate = (date, view) => {
-  //   // Check if the view is 'day' and if a date is selected
-  //   if (view === 'day' && date) {
-  //     // Navigate to the JournalForm page with the selected date as a parameter
-  //     navigate(`/journals/new?date=${encodeURIComponent(date)}`);
-  //   }
-  // };
-
-  // const handleSelectSlot = ({ start }) => {
-  //   setSelectedDate(start); // Update the selected date in the state
-  //   navigate('/journals/new'); // Navigate to the JournalForm page
-  // };
-
+  
   const handleSelectSlot = ({ start }) => {
-    const formattedDate = moment(start).format('YYYY-MM-DD'); // Format the selected date
-    
+    const formattedDate = moment(start).format('YYYY-MM-DD');
     navigate(`/journals/new?date=${encodeURIComponent(formattedDate)}`);
   };
 
   const handleEventClick = (event) => {
-    // You can perform actions when an event is clicked
     console.log("Event clicked:", event);
-    navigate(`/journal/${event.id}`); // Navigate to the edit/delete page with event ID as a parameter
+    navigate(`/journals/edit/:${event.id}`);
   };
   
 
@@ -78,9 +30,10 @@ const ViewAllJournals = (props) => {
       .get('http://localhost:8000/api/journals', { withCredentials: true })
       .then((res) => {
         const events = res.data.map((journal) => ({
+          id: journal._id,
           title: journal.feeling,
-          start: new Date(journal.start), // Convert the createdAt date to a Date object
-          end: new Date(journal.end), // For simplicity, setting end to the same as start
+          start: new Date(journal.start),
+          end: new Date(journal.end),
           notes: journal.notes,
         }));
         setJournalList(events);
@@ -89,40 +42,6 @@ const ViewAllJournals = (props) => {
         console.log(err);
       });
   }, []);
-
-  // const handleSlotSelect = (slotInfo) => {
-  //   const newEvent = {
-  //     title: 'New Event',
-  //     start: slotInfo.start,
-  //     end: slotInfo.end,
-  //   };
-  //   setEvents(prevEvents => [...prevEvents, newEvent]);
-  // };
-
-  // const handleDayClick = (date) => {
-  //   // Redirect to a new page based on the clicked date
-  //   navigate(`/journals/new/${date.toISOString()}`);
-  // };
-      // const handleNavigate = (date, view) => {
-      //     navigate(`/journals/new`);
-        
-      // };
-      // 
-    
-    
-    // useEffect( () => {
-    //     axios.get('http://localhost:8000/api/journals',{withCredentials: true})
-    //     .then(res => {
-    //         console.log(res.data);
-            
-    //         setJournalList(res.data)
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-      
-    //   },[]
-    // );
 
     console.log(journalList);
 
@@ -137,7 +56,6 @@ const ViewAllJournals = (props) => {
             })
     }
     
-
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <div className="myCustomHeight">
@@ -150,14 +68,8 @@ const ViewAllJournals = (props) => {
               endAccessor="end"
               style={{ height: 700, width:700 }}
               onSelectEvent={handleEventClick}
-              // onSelectSlot={handleSlotSelect}
-              // selectable={true}
-              // onNavigate={handleDayClick}
-              // onNavigate={handleNavigate}
               selectable
-              onSelectSlot={handleSelectSlot} // Call the function when a date is selected
-
-              
+              onSelectSlot={handleSelectSlot}
               />
         </div>
         <div>

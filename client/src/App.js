@@ -4,9 +4,7 @@ import Form from './views/form';
 import Register from './components/Register';
 import Login from './components/Login';
 import ViewAllJournals from './components/ViewAllJournals';
-import ViewOneJournal from './components/ViewOneJournal';
 import Update from './components/Update';
-
 
 function App() {
   return (
@@ -17,7 +15,7 @@ function App() {
                   <Route element={<Register/>} path="/register"/>
                   <Route element={<Form/>} path="/journals/new"/>
                   <Route element={<ViewAllJournals/>} path="/journals/view"/>
-                  {/* <Route element={<ViewOneJournal/>} path="/journal/:id"/> */}
+                  <Route element={<Update/>} path="/journals/edit/:id"/>
                 </Routes>
           </BrowserRouter>
     </div>
