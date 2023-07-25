@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 
+
 const Update = (props) => {
+
+    const{ removeFromDom, journal } = props;
 
     const {id} = useParams();
     const [feeling, setFeeling] = useState("");
@@ -12,11 +15,12 @@ const Update = (props) => {
     // Added this because the ':' in the value of the id was throwing off the axios requests
     const newId = id.substring(1,id.length);
 
+    
+
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/journal/' + newId)
             .then(res => {
-                console.log(res.data);
                 setFeeling(res.data.feeling);
                 setNotes(res.data.notes);
             })
@@ -36,8 +40,15 @@ const Update = (props) => {
             .catch(err => console.log(err))
     }
 
-    console.log(feeling);
-    console.log(notes);
+    const deleteJournal = () => {
+        axios.delete('http://localhost:8000/api/journals/' + newId)
+            .then(res => {
+                console.log(res);
+                navigate("/journals/view"); 
+            })
+            .catch(err => console.log(err))
+        }
+
     return(
         <div>
             <form onSubmit={updateJournal}>
@@ -53,6 +64,8 @@ const Update = (props) => {
                         </p>
                     </div>
                     <input type="submit"/>
+                    <hr></hr>
+                    <button onClick={(e)=>{deleteJournal()}}>Delete</button>
             </form>
         </div>
     )

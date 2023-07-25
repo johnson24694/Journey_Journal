@@ -32,3 +32,10 @@ module.exports.updateJournal = (request, response) => {
         .then(updatedJournal => response.json(updatedJournal))
         .catch(err => response.json(err))
 }
+
+module.exports.deleteJournal = (request, response) => {
+    Journal.deleteOne({ _id: request.params.id }) 
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
+
