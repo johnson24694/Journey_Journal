@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Handwriting";
+    src: url(./fonts/Please\ write\ me\ a\ song.ttf);
+}
+
+.loginPage {
+    background-image: url(./images/JournalPattern.jpg);
+    background-repeat: repeat;
+    height: 100vh;
+}  
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 330px;
+    background-image: url(./images/CompJournalthing.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: "Handwriting";
+    height: 100vh;
+}
+
+.loginContainer h1 {
+    font-size: 45px;
+    text-shadow: 3px 3px 4px rgb(193, 217, 231);
+}
+
+.loginContainer input[type=email], input[type=password] {
+    font-family: "Handwriting";
+    width: 100%;
+    font-size: 19px;
+    font-weight: 500;
+    border: 2px solid rgb(85, 85, 85);
+    border-radius: 5px;
+}
+
+.loginContainer button {
+    background-color: rgb(193, 217, 231);
+    font-family: "Handwriting";
+    font-size: 19px;
+    width: 60%;
+    font-weight: 700;
+    border-radius: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.loginContainer p {
+    text-align: center;
+    font-weight: 900;
+    font-size: 20px;
+}
