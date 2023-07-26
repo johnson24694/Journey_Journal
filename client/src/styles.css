@@ -7,9 +7,12 @@
     background-image: url(./images/JournalPattern.jpg);
     background-repeat: repeat;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }  
 
-.loginContainer {
+/* .loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +23,22 @@
     background-position: center;
     font-family: "Handwriting";
     height: 100vh;
+} */
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Handwriting";
+    height: 100vh;
+    height: fit-content;
+    width: 400px;
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10%;
+    box-shadow:  0 40px 100px 0 rgba(0, 0, 0, 0.2), 0 60px 200px 0 rgba(0, 0, 0, 0.19);
 }
 
 .loginContainer h1 {
@@ -33,7 +52,6 @@
     font-size: 19px;
     font-weight: 500;
     border: 2px solid rgb(85, 85, 85);
-    border-radius: 5px;
 }
 
 .loginContainer button {
@@ -50,4 +68,13 @@
     text-align: center;
     font-weight: 900;
     font-size: 20px;
+}
+
+
+
+
+.registerPage {
+    background-image: url(./images/JournalPattern.jpg);
+    background-repeat: repeat;
+    height: 100vh;
 }
