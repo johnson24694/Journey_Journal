@@ -57,8 +57,11 @@ const ViewAllJournals = (props) => {
     }
     
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <div className="myCustomHeight">
+    <div className="calanderPage">
+        <div className="logout">
+            <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
+        </div>
+        <div className="calanderContainer">
               <Calendar
               localizer={localizer}
               defaultView="month"
@@ -72,9 +75,7 @@ const ViewAllJournals = (props) => {
               onSelectSlot={handleSelectSlot}
               />
         </div>
-        <div>
-            <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
-        </div>
+        <br/>
     </div>
     
   )
