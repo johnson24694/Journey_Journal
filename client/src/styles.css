@@ -139,7 +139,6 @@
     display: flex;
     flex-direction: column;
     font-family: "Handwriting";
-    
 }
 
 .formContainer h1 {
@@ -220,12 +219,56 @@ padding: 30px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.button button {
+input[type=submit] {
     background-color: rgb(193, 217, 231);
     font-family: "Handwriting";
-    font-size: 19px;
+    font-size: 25px;
     font-weight: 700;
-    width: 60%;
+    width: 10%;
     border-radius: 5px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-top: 10px;
 }
+
+.updatePage {
+    background-image: url(./images/GraphPaper.png);
+    height: 200vh;
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    font-family: "Handwriting";
+}
+
+.updateContainer h1 {
+    display: flex;
+    justify-content: center;
+    font-family: "Handwriting";
+    font-weight: 1000;
+    font-size: 50px;
+    color: white;
+    text-shadow: 3px 3px 4px rgb(71, 73, 73);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-image: linear-gradient(to right, rgb(116, 166, 212),rgb(190, 153, 233));
+    height: fit-content;
+    margin-top: 0;
+    padding: 30px;
+}
+
+.updateContainer input[type=text], textarea, input[type=datetime-local] {
+    display: flex;
+    justify-content: center;
+    font-family: "Handwriting";
+    font-weight: 500;
+    font-size: 20px;
+    }
+
+    button {
+        background-color: rgb(250, 38, 38);
+        font-family: "Handwriting";
+        font-size: 25px;
+        font-weight: 700;
+        width: 10%;
+        border-radius: 5px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        margin-top: 10px;
+    }

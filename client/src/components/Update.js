@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import '../styles.css'
 
 
 const Update = (props) => {
@@ -51,23 +52,28 @@ const Update = (props) => {
         }
 
     return(
-        <div>
-            <form onSubmit={updateJournal}>
-            <h1>Update Journal Entry</h1>
-                    <div>
-                        <p>
-                            <label>How are you feeling today? </label>
-                            <input type="text" name = "feeling" value = {feeling} placeholder={feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
-                        </p>
-                        <p>
-                            <label>What notable events happened today? </label>
-                            <input type="text" name = "notes" value = {notes} onChange = {(e)=>setNotes(e.target.value)}/>
-                        </p>
-                    </div>
-                    <input type="submit"/>
-                    <hr></hr>
-                    <button onClick={(e)=>{deleteJournal()}}>Delete</button>
-            </form>
+        <div className='updatePage'>
+            <div className='updateContainer'>
+                <form onSubmit={updateJournal}>
+                <h1>Update Journal Entry</h1>
+                        <div>
+                            <div className='q1'>
+                                <label>How are you feeling today? </label>
+                                <input type="text" name = "feeling" value = {feeling} placeholder={feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
+                            </div>
+                            <br/>
+                            <div className='q2'>
+                                <label>What notable events happened today? </label>
+                                <textarea rows="5" cols="33" name = "notes" value = {notes} onChange = {(e)=>setNotes(e.target.value)}/>
+                            </div>
+                        </div>
+                        <div style={{ textAlign: 'center'}}>
+                        <input type="submit"/>
+                        <br/>
+                        <button onClick={(e)=>{deleteJournal()}}>Delete</button>
+                        </div>
+                </form>
+            </div>
         </div>
     )
 }
