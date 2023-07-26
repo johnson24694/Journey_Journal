@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import '../styles.css'
 
 const JournalForm= (props) => {
     const {journal, setJournal} = props;
@@ -42,42 +43,47 @@ const JournalForm= (props) => {
 }
 
         return (
-            <div>
-                <form onSubmit={onSubmitHandler}>
-                    <h1>Create New Journal Entry</h1>
-                    <div>
-                        <p>
-                            <label>How are you feeling today? </label>
-                            <input type="text" onChange = {(e)=>setFeeling(e.target.value)}/>
-                            {errors.feeling ? <p>{errors.feeling.message}</p> : null}
-                        </p>
-                        <p>
-                            <label>What notable events happened today? </label>
-                            <input type="text" onChange = {(e)=>setNotes(e.target.value)}/>
-                            {errors.notes ? <p>{errors.notes.message}</p> : null}
-                        </p>
-                        <p>
-                            <label>Started on: </label>
-                            <input
-                                type="datetime-local"
-                                value={moment(start).format("YYYY-MM-DDTHH:mm")}
-                                onChange={(e) => setStart(new Date(e.target.value))}
-                            />
-                        </p>
-                        <p>
-                            <label>Ended on: </label>
-                            <input
-                                type="datetime-local"
-                                value={moment(end).format("YYYY-MM-DDTHH:mm")}
-                                onChange={(e) => setEnd(new Date(e.target.value))}
-                            />
-                        </p>
-                    </div>
-
-                    <input type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}  />
-                </form>
+            <div className="formPage">
+                <div className='formContainer'>
+                    <form onSubmit={onSubmitHandler}>
+                        <h1>Create New Journal Entry</h1>
+                        <div>
+                            <div className="q1">
+                                <label>How are you feeling today? </label>
+                                <input type="text" onChange = {(e)=>setFeeling(e.target.value)}/>
+                                {errors.feeling ? <p>{errors.feeling.message}</p> : null}
+                            </div>
+                            <br/>
+                            <div className="q2">
+                                <label>What notable events happened today? </label>
+                                <textarea rows="5" cols="33" onChange = {(e)=>setNotes(e.target.value)}/>
+                                {errors.notes ? <p>{errors.notes.message}</p> : null}
+                            </div>
+                            <br/>
+                            <div className='dates'>
+                                <label>Started on: </label>
+                                <input
+                                    type="datetime-local"
+                                    value={moment(start).format("YYYY-MM-DDTHH:mm")}
+                                    onChange={(e) => setStart(new Date(e.target.value))}
+                                />
+                            <br/>
+                                <label>Ended on: </label>
+                                <input
+                                    type="datetime-local"
+                                    value={moment(end).format("YYYY-MM-DDTHH:mm")}
+                                    onChange={(e) => setEnd(new Date(e.target.value))}
+                                />
+                            </div>
+                        </div>
+                        <br/>
+                            <div className='button' style={{ textAlign: 'center'}} >
+                                <input type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}/>
+                            </div>
+                    </form>
+                </div>
             </div>
-        )
+            )
 }
 export default JournalForm;
 
