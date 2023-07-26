@@ -77,8 +77,8 @@ const JournalForm= (props) => {
                             </div>
                         </div>
                         <br/>
-                            <div className='button' style={{ textAlign: 'center'}} >
-                                <input type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}/>
+                            <div style={{ textAlign: 'center'}} >
+                                <input className='button' type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}/>
                             </div>
                     </form>
                 </div>

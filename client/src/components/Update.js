@@ -70,7 +70,7 @@ const Update = (props) => {
                         <div style={{ textAlign: 'center'}}>
                         <input type="submit"/>
                         <br/>
-                        <button onClick={(e)=>{deleteJournal()}}>Delete</button>
+                        <button className='delete' onClick={(e)=>{deleteJournal()}}>Delete</button>
                         </div>
                 </form>
             </div>

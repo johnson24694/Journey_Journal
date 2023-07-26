@@ -108,7 +108,7 @@
     background-repeat: repeat;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -117,6 +117,15 @@
     background-color: rgba(250, 200, 152);
     width: fit-content;
     height: fit-content;
+    font-family: "Handwriting";
+    font-weight: 900;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+button {
+    font-family: "Handwriting";
+    font-weight: 900;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .logout {
@@ -142,18 +151,18 @@
 }
 
 .formContainer h1 {
-display: flex;
-justify-content: center;
-font-family: "Handwriting";
-font-weight: 1000;
-font-size: 50px;
-color: white;
-text-shadow: 3px 3px 4px rgb(71, 73, 73);
-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-background-image: linear-gradient(to right, rgb(116, 166, 212),rgb(190, 153, 233));
-height: fit-content;
-margin-top: 0;
-padding: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: "Handwriting";
+    font-weight: 1000;
+    font-size: 50px;
+    color: white;
+    text-shadow: 3px 3px 4px rgb(71, 73, 73);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-image: linear-gradient(to right, rgb(116, 166, 212),rgb(190, 153, 233));
+    height: fit-content;
+    margin-top: 0;
+    padding: 30px;
 }
 
 .formContainer input[type=text], textarea, input[type=datetime-local] {
@@ -262,13 +271,13 @@ input[type=submit] {
     font-size: 20px;
     }
 
-    button {
-        background-color: rgb(250, 38, 38);
-        font-family: "Handwriting";
-        font-size: 25px;
-        font-weight: 700;
-        width: 10%;
-        border-radius: 5px;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        margin-top: 10px;
-    }
+.delete {
+    background-color: rgb(250, 38, 38);
+    font-family: "Handwriting";
+    font-size: 25px;
+    font-weight: 700;
+    width: 10%;
+    border-radius: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-top: 10px;
+} 
