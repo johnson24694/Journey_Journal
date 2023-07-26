@@ -1,4 +1,5 @@
-const JournalController = require('../controller/journal.controller'); 
+const JournalController = require('../controller/journal.controller');
+const {authenticate} = require('../config/jwt.config');  
 
 module.exports = (app) => {
     app.post('/api/journal', JournalController.createJournal);
