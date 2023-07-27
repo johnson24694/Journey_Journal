@@ -73,11 +73,13 @@ const Update = (props) => {
                             <div className='q1'>
                                 <label>How are you feeling today? </label>
                                 <input type="text" name = "feeling" value = {feeling} placeholder={feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
+                                {errors.feeling ? <p>{errors.feeling.message}</p> : null}
                             </div>
                             <br/>
                             <div className='q2'>
                                 <label>What notable events happened today? </label>
                                 <textarea rows="5" cols="33" name = "notes" value = {notes} onChange = {(e)=>setNotes(e.target.value)}/>
+                                {errors.notes ? <p>{errors.notes.message}</p> : null}
                             </div>
                         </div>
                         <div style={{ textAlign: 'center'}}>
