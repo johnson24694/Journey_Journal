@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import '../styles.css'
+// import { updateJournal } from '../../../server/controller/journal.controller';
 
 const Update = (props) => {
 
@@ -12,8 +13,8 @@ const Update = (props) => {
     const {id} = useParams();
     const [feeling, setFeeling] = useState("");
     const [notes, setNotes] = useState("");
-    const [start, setStart] = useState( new Date());
-    const [end, setEnd] = useState( new Date());
+    // const [start, setStart] = useState( new Date());
+    // const [end, setEnd] = useState( new Date());
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
 
@@ -26,21 +27,21 @@ const Update = (props) => {
             .then(response => {
                 setFeeling(response.data.feeling);
                 setNotes(response.data.notes);
-                setStart(new Date(response.data.start));
-                setEnd(new Date(response.data.end));
+                // setStart(new Date(response.data.start));
+                // setEnd(new Date(response.data.end));
             })
             .catch(err => console.log(err))
     }, []);
 
-    const onSubmitHandler = (e) => {
+    const updateJournal = (e) => {
         e.preventDefault();
-        const formattedStart = moment(start).format("MM-DD-YYYY HH:mm:ss");
-        const formattedEnd = moment(end).format("MM-DD-YYYY HH:mm:ss");
+        // const formattedStart = moment(start).format("MM-DD-YYYY HH:mm:ss");
+        // const formattedEnd = moment(end).format("MM-DD-YYYY HH:mm:ss");
         axios.patch('http://localhost:8000/api/journals/' + newId, {
             feeling,    
             notes,
-            start: formattedStart,
-            end: formattedEnd,
+        //     start: formattedStart,
+        //     end: formattedEnd,
         })
             .then((response) => {
                 console.log(response);
@@ -63,45 +64,7 @@ const Update = (props) => {
         }
 
     return(
-<<<<<<< HEAD
-        <div>
-            <form onSubmit={onSubmitHandler}>
-            <h1>Update Journal Entry</h1>
-                    <div>
-                        <p>
-                            <label>How are you feeling today? </label>
-                            <input type="text" name = "feeling" value = {feeling} onChange = {(e)=>setFeeling(e.target.value)}/>
-                            {errors.feeling ? <p style={{ color: 'red' }}>{errors.feeling.message}</p> : null}
-                        </p>
-                        <p>
-                            <label>What notable events happened today? </label>
-                            <input type="text" name = "notes" value = {notes} onChange = {(e)=>setNotes(e.target.value)}/>
-                            {errors.notes ? <p style={{ color: 'red' }}>{errors.notes.message}</p> : null}
-                        </p>
-                        <p>
-                            <label>Started on: </label>
-                            <input
-                                type="datetime-local"
-                                name = "start"
-                                value={moment(start).format("YYYY-MM-DDTHH:mm")}
-                                onChange={(e) => setStart(new Date(e.target.value))}
-                            />
-                        </p>
-                        <p>
-                            <label>Ended on: </label>
-                            <input
-                                type="datetime-local"
-                                name= "end"
-                                value={moment(end).format("YYYY-MM-DDTHH:mm")}
-                                onChange={(e) => setEnd(new Date(e.target.value))}
-                            />
-                        </p>
-                    </div>
-                    <input type="submit"/>
-                    <hr></hr>
-                    <button onClick={(e)=>{deleteJournal()}}>Delete</button>
-            </form>
-=======
+
         <div className='updatePage'>
             <div className='updateContainer'>
                 <form onSubmit={updateJournal}>
@@ -124,7 +87,6 @@ const Update = (props) => {
                         </div>
                 </form>
             </div>
->>>>>>> 7f0d1fa6d3a563249e13ada96e3a06f8e248a3dc
         </div>
     )
 }
