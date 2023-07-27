@@ -33,9 +33,11 @@ const JournalForm= (props) => {
                 end: formattedEnd,
             }, 
             {
+                
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                },
+                
         })
         .then(res=> {
             console.log(res);
@@ -46,9 +48,10 @@ const JournalForm= (props) => {
         console.log(err);
         // if(!err.response.data.verify){
         //     setErrors({loggedIn: 'You must be logged in to create a journal entry!'})
-        // }
+        // } else {
         console.log(err.response.data.errors);
         setErrors(err.response.data.errors);
+        // }
     });
 }
 
@@ -89,7 +92,7 @@ const JournalForm= (props) => {
                         </div>
                         <br/>
                             <div style={{ textAlign: 'center'}} >
-                                <input className='button' type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}/>
+                                <input className='button' type="submit"/>
                             </div>
                     </form>
                     {/* {
