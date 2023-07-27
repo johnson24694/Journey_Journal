@@ -16,7 +16,7 @@ module.exports.getAllJournals = (req, res) => {
     })
     .catch(err => {
         console.log(err)
-        response.json(err)
+        response.status(400).json(err)
     })
 }
 
@@ -43,5 +43,5 @@ module.exports.deleteJournal = (request, response) => {
 module.exports.getOneJournalById = (request, response) => {
     Journal.findOne({_id:request.params.id})
         .then(journal => response.json(journal))
-        .catch(err => response.json(err));
+        .catch(err => response.status(400).json(err));
 }
