@@ -59,6 +59,8 @@ const ViewAllJournals = (props) => {
     
   return (
     <div className="calanderPage">
+      <h1>Journey Journal</h1>
+      <h3>Click on a date to add a journal entry!</h3>
         <div className="calanderContainer">
               <Calendar
               localizer={localizer}
@@ -67,16 +69,16 @@ const ViewAllJournals = (props) => {
               events={journalList}
               startAccessor="start"
               endAccessor="end"
-              style={{ height: 700, width:700 }}
+              style={{ height: 800, width:900 }}
               onSelectEvent={handleEventClick}
               selectable = 'true'
               onSelectSlot={handleSelectSlot}
               />
+        <div className="logout">
+          <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
+        </div>
         </div>
         <br/>
-        <div className="logout">
-            <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
-        </div>
     </div>
     
   )
