@@ -142,14 +142,29 @@
     width: fit-content;
     height: fit-content;
     font-family: "Handwriting";
-    font-weight: 900;
     border: 2px solid rgb(0, 0, 0);
+}
+
+.rbc-toolbar {
+    font-size: 45px;
+    color: white;
+    text-shadow: 4px 4px 4px rgb(39, 39, 39);
+}
+
+.rbc-header {
+font-size: 18px;
+}
+
+.rbc-month-view, .rbc-day-bg, .rbc-header {
+border: 1px solid #000000;
+box-shadow: 0 6px 8px 0 rgba(46, 46, 46, 0.24),0 9px 25px 0 rgba(39, 39, 39, 0.19);
 }
 
 button {
     font-family: "Handwriting";
     font-weight: 900;
-    border: 2px solid rgb(0, 0, 0);
+    font-size: 18px;
+    border: 2px solid #000000;
 }
 
 .logout {
