@@ -40,6 +40,7 @@ const ViewAllJournals = (props) => {
       })
       .catch((err) => {
         console.log(err);
+        setJournalList([])
       });
   }, []);
 

@@ -25,7 +25,7 @@ const JournalForm= (props) => {
         const formattedStart = moment(start).format("MM-DD-YYYY HH:mm:ss");
         const formattedEnd = moment(end).format("MM-DD-YYYY HH:mm:ss");
         axios.post(
-            'http://localhost:8000/api/journal', 
+            'http://localhost:8000/api/journal', /*feeling, notes, start, end, { withCredentials: true },*/
             {
                 feeling,
                 notes,
@@ -39,10 +39,14 @@ const JournalForm= (props) => {
         })
         .then(res=> {
             console.log(res);
+            // setJournal([...journal, res.data])
             navigate('/journals/view')
         })
         .catch((err)=> {
         console.log(err);
+        // if(!err.response.data.verify){
+        //     setErrors({loggedIn: 'You must be logged in to create a journal entry!'})
+        // }
         console.log(err.response.data.errors);
         setErrors(err.response.data.errors);
     });
@@ -51,6 +55,7 @@ const JournalForm= (props) => {
         return (
             <div className="formPage">
                 <div className='formContainer'>
+                    
                     <form onSubmit={onSubmitHandler}>
                         <h1>Create New Journal Entry</h1>
                         <div>
@@ -87,6 +92,10 @@ const JournalForm= (props) => {
                                 <input className='button' type="submit" onSubmit={(e)=>setJournal({feeling,notes,start,end})}/>
                             </div>
                     </form>
+                    {/* {
+                        errors.loggedIn?
+                        <h1 style={{ textAlign: 'center'}}>{errors.loggedIn}</h1>: null
+                    } */}
                 </div>
             </div>
             )
