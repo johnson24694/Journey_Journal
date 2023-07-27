@@ -58,9 +58,6 @@ const ViewAllJournals = (props) => {
     
   return (
     <div className="calanderPage">
-        <div className="logout">
-            <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
-        </div>
         <div className="calanderContainer">
               <Calendar
               localizer={localizer}
@@ -76,6 +73,9 @@ const ViewAllJournals = (props) => {
               />
         </div>
         <br/>
+        <div className="logout">
+            <p> <a href="#" onClick={logout} class="nav-link" aria-current="page">Log Out</a></p>
+        </div>
     </div>
     
   )
